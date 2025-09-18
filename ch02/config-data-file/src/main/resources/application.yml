@@ -3,3 +3,22 @@ server:
 spring:
   profiles:
     active: test
+# dev 프로파일이 활성화된다.
+# 따라서 애플리케이션을 실행하면 application-test.properties(또는 yml) 파일 내용이 로딩된다.
+
+# 설정 파일 로딩 순서
+# 1. 애플리케이션 JAR 파일 안에 패키징 되는 application.properties 파일
+# 2. 애플리케이션 JAR 파일 안에 패키징 되는 application-{profile}.properties 파일
+# 3. 애플리케이션 JAR 파일 밖에 패키징 되는 application.properties 파일
+# 4. 애플리케이션 JAR 파일 밖에 패키징 되는 application-{profile}.properties 파일
+# 늦게 로딩되는 파일이 먼저 로딩된 파일의 정보를 덮어쓴다.
+
+#  1 /app/  <-- 서버의 디렉토리
+#  2 ├── myapp.jar              <-- 실행 파일 (이삿짐 상자)
+#  3 │   ├── BOOT-INF/
+#  4 │   │   ├── classes/
+#  5 │   │   │   └── application.properties  <-- ★ JAR 내부 설정 파일 (상자 안의 물건)
+#  6 │   │   └── ...
+#  7 │   └── ...
+#  8 │
+#  9 └── application.properties     <-- ★ JAR 외부 설정 파일 (상자 밖의 추가 짐)

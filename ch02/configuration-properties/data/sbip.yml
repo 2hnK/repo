@@ -1,2 +1,9 @@
 server:
   port: 8081
+
+# java -jar target/config-data-file-0.0.1-SNAPSHOT.jar --spring.config.location=data/sbip.yml
+# 작성된 애플리케이션의 코드와 의존성 라이브러리들을 패키징을 실행한다.
+# 설정 파일의 경로를 --spring.config.location 옵션으로 지정할 수 있다.
+
+# java -jar target/config-data-file-0.0.1-SNAPSHOT.jar --spring.config.location=optional:data/sbip.yml
+# optional: 지정한 경로에 설정 파일이 없다면 기본 설정값을 기준으로 애플리케이션이 실행된다.
